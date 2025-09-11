@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Nice College</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: linear-gradient(90deg, #003366, #00509e);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 8px;
+            font-weight: 300;
+        }
+
+        /* Stylish Paragraphs */
+        .c1 {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            text-align: justify;
+            letter-spacing: 0.5px;
+        }
+
+        .about {
+            padding: 100px;
+            background: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .highlight {
+            color: #00509e;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #00509e;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background: #003366;
+            transform: translateY(-3px);
+        }
+
+        /* 🔹 Main Container */
+        .team-container {
+            max-width: 750px;
+            /* main card width */
+            margin: 40px auto;
+            /* center align */
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+            text-align: center;
+        }
+
+        .team-container h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #003366;
+            border-bottom: 2px solid #00509e;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* 🔹 Individual Profile Card (smaller version) */
+        .profile-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            border: 2px solid #003366;
+            margin: 15px 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            /* keep circular */
+            border: 3px solid #00509e;
+            /* blue border */
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            /* one shadow only */
+            transition: transform 0.3s ease;
+        }
+
+        .profile-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .profile-info h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #003366;
+        }
+
+        .profile-info .title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #00509e;
+            margin: 4px 0 8px;
+        }
+
+        .profile-info p {
+            font-size: 0.95rem;
+            color: #333;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        /* 🔹 Gallery Section */
+        /* 🔹 Full Width Gallery Section */
+        .gallery-section {
+            width: 100%;
+            margin: 0;
+            padding: 40px 40px;
+            /* fixed px padding instead of % */
+            background: linear-gradient(135deg, #f0f4ff, #e8efff);
+            text-align: center;
+            box-sizing: border-box;
+            /* ✅ ensures padding stays inside width */
+        }
+
+
+        .gallery-section h2 {
+            font-size: 2rem;
+            color: #003366;
+            margin-bottom: 10px;
+        }
+
+        .gallery-section .gallery-desc {
+            font-size: 1rem;
+            color: #444;
+            margin-bottom: 25px;
+        }
+
+        /* 🔹 Responsive Grid Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            background: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .footer .social-links {
+            margin-top: 10px;
+        }
+
+        .footer .social-links a {
+            color: white;
+            /* gold color */
+            margin: 0 10px;
+            font-size: 22px;
+            /* icon size */
+            text-decoration: none;
+        }
+
+        .footer .social-links a:hover {
+            color: #ffd700;
+            /* turns white on hover */
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>Nice College</h1>
+        <p>Empowering Students with Knowledge & Skills</p>
+    </header>
+
+    <div class="about">
+        <h2>About Nice College</h2>
+        <p class="c1">
+            <span class="highlight">NICE College</span> was established in <span class="highlight">1995</span>
+            with a vision to provide <span class="highlight">quality higher education</span>
+            in <span class="highlight">science</span>, <span class="highlight">technology</span>,
+            and <span class="highlight">management</span>. Over the years, it has grown into a
+            <span class="highlight">reputed institution</span> with
+            <span class="highlight">modern infrastructure</span>,
+            <span class="highlight">highly qualified faculty</span>, and a strong focus on
+            <span class="highlight">research and innovation</span>. The college offers
+            <span class="highlight">undergraduate</span>,
+            <span class="highlight">postgraduate</span>, and
+            <span class="highlight">professional programs</span>, ensuring
+            <span class="highlight">holistic development</span> of students. With a mission to
+            <span class="highlight">nurture talent</span> and
+            <span class="highlight">instill values</span>, NICE College stands as a
+            <span class="highlight">pillar of excellence</span> in the region. Our
+            <span class="highlight">spacious campus</span>,
+            <span class="highlight">world-class library</span>,
+            <span class="highlight">modern laboratories</span>, and
+            <span class="highlight">student-friendly environment</span> create the perfect setting
+            for <span class="highlight">academic and personal growth</span>.
+        </p>
+        <a href="#more" class="btn">View More</a>
+    </div>
+
+
+    <!-- 🔹 Stylish Team Section -->
+    <div class="team-container">
+        <h2>🌟 Our Leadership & Faculty 🌟</h2>
+
+        <!-- 👨‍💼 Director -->
+        <div class="profile-card">
+            <img src="Image/image11.gif" alt="Director" class="profile-img">
+            <div class="profile-info">
+                <h3>Mr. Amarnath Singh</h3>
+                <p class="title">Director</p>
+                <p>25+ years of experience in academic leadership, guiding NICE College towards innovation and
+                    excellence.</p>
+            </div>
+        </div>
+
+        <!-- 👩‍💼 Managing Director -->
+        <div class="profile-card">
+            <img src="Image/img58.jpg" alt="Managing Director" class="profile-img">
+            <div class="profile-info">
+                <h3>Mr. Shyam Singh</h3>
+                <p class="title">Managing Director</p>
+                <p>Focused on strategic growth, student empowerment, and building strong industry-academic partnerships.
+                </p>
+            </div>
+        </div>
+
+        <!-- 👨‍🏫 HOD -->
+        <div class="profile-card">
+            <img src="Image/img57.jpg" alt="HOD" class="profile-img">
+            <div class="profile-info">
+                <h3>Mr. Rajata Singh</h3>
+                <p class="title">Head of Department (Computer Science)</p>
+                <p>Expert in AI & Machine Learning, mentoring students and leading research initiatives.</p>
+            </div>
+        </div>
+
+        <!-- 👩‍🏫 Teacher -->
+        <div class="profile-card">
+            <img src="Image/image2.jpg" alt="Teacher" class="profile-img">
+            <div class="profile-info">
+                <h3>Mrs. Pooja Verma</h3>
+                <p class="title">Assistant Professor</p>
+                <p>Dedicated educator inspiring students in mathematics and logical reasoning with interactive teaching
+                    methods.</p>
+            </div>
+        </div>
+    </div>
+    <!-- 🔹 Photo Gallery Section -->
+    <!-- 🔹 Full Width Photo Gallery -->
+    <section class="gallery-section">
+        <h2>📸 College Photo Gallery</h2>
+        <p class="gallery-desc">
+            A glimpse of our college library, campus, and events that showcase the vibrant life at NICE College.
+        </p>
+
+        <div class="photo-gallery">
+            <img src="Image/img38.jpg" alt="">
+            <img src="Image/img9.1.png" alt="">
+            <img src="Image/img41.jpg" alt="">
+            <img src="Image/img33.jpg" alt="">
+            <img src="Image/img30.jpg" alt="">
+            <img src="Image/img36.jpg" alt="">
+            <img src="Image/img34.jpg" alt="">
+            <img src="Image/img35.jpg" alt="">
+            <img src="Image/img39.jpg" alt="">
+            <img src="Image/img20.jpg" alt="">
+            <img src="Image/img40.png" alt="">
+            <img src="Image/img37.jpg" alt="">
+
+        </div>
+    </section>
+    <footer class="footer">
+        <p>© 2025 Nice College. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+    </footer>
+</body>
+
+</html>
