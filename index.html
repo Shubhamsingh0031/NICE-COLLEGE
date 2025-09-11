@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NICE COLLEGE - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+  <header>
+    <img src="Image/image1.png" alt="Nice College" width="100px" height="100px">
+    <h1>NICE COLLEGE</h1>
+    <p>Peer Nagar Colony, Ghazipur | Near DM House</p>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-btn"><i class="fas fa-bars"></i></label>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#courses">Courses</a>
+      <a href="#facilities">Facilities</a>
+      <a href="#faculty">Faculty</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <section id="about">
+    <div class="container">
+      <h1>🏫 About NICE COLLEGE</h1>
+      <p>
+        NICE COLLEGE is a premier institute dedicated to academic excellence, innovation, and skill development.
+        With a strong vision to empower students through quality education, the college has become a trusted name for
+        higher learning in the region.
+      </p>
+      <p>
+        We offer a blend of professional, technical, and academic courses designed to meet the modern challenges of
+        education and industry.
+        Our expert faculty, well-equipped labs, and student-friendly environment create the perfect platform for overall
+        growth.
+      </p>
+
+      <h2>🎓 Courses Offered</h2>
+      <ul>
+        <li><span class="highlight">BCA</span> (Bachelor of Computer Applications) – Build a strong foundation in
+          computer science and IT.</li>
+        <li><span class="highlight">PGDCA</span> (Post Graduate Diploma in Computer Applications) – Advance your skills
+          for professional growth.</li>
+        <li><span class="highlight">O-Level</span> (DOEACC/NIELIT) – A recognized IT certification for career
+          opportunities.</li>
+        <li><span class="highlight">CCC</span> (Course on Computer Concepts) – Basic computer literacy for beginners.
+        </li>
+        <li><span class="highlight">B.Sc.</span> (Bachelor of Science) – A comprehensive science program for future
+          innovators.</li>
+      </ul>
+
+      <h2>🌟 Why Choose NICE COLLEGE?</h2>
+      <ul>
+        <li>✔ Modern infrastructure & digital classrooms</li>
+        <li>✔ Experienced and dedicated faculty</li>
+        <li>✔ Career-oriented courses with practical training</li>
+        <li>✔ Focus on discipline, knowledge, and innovation</li>
+        <li>✔ Convenient location at Ghazipur, Peer Nagar Colony, Near DM House</li>
+      </ul>
+
+      <p>
+        At <strong>NICE COLLEGE</strong>, we believe in shaping not just professionals but responsible citizens who can
+        lead with knowledge and values.
+      </p>
+      <a href="nice2.html" class="nice">Nice College</a>
+    </div>
+  </section>
+  <section id="courses">
+    <h2>📘 Courses Offered</h2>
+
+    <div class="course-card">
+      <div>
+        <div class="course-name">BCA</div>
+        <div class="course-desc">Build a strong foundation in computer science and IT.</div>
+      </div>
+      <a href="Bca.html"><button class="btn">View More</button></a>
+    </div>
+
+    <div class="course-card">
+      <div>
+        <div class="course-name">PGDCA</div>
+        <div class="course-desc">Advance your skills for professional growth.</div>
+      </div>
+      <a href="Pgdca.html"><button class="btn">View More</button></a>
+    </div>
+
+    <div class="course-card">
+      <div>
+        <div class="course-name">O-Level</div>
+        <div class="course-desc">A recognized IT certification for career opportunities.</div>
+      </div>
+      <a href="o.html"><button class="btn">View More</button></a>
+    </div>
+
+    <div class="course-card">
+      <div>
+        <div class="course-name">CCC</div>
+        <div class="course-desc">Basic computer literacy for beginners.</div>
+      </div>
+      <a href="ccc.html"><button class="btn">View More</button></a>
+    </div>
+
+    <div class="course-card">
+      <div>
+        <div class="course-name">B.Sc.</div>
+        <div class="course-desc">A comprehensive science program for future innovators.</div>
+      </div>
+      <a href="bsc.html"><button class="btn">View More</button></a>
+    </div>
+
+    <input type="checkbox" id="admission-toggle" hidden>
+    <label for="admission-toggle" class="nice1">Admission</label>
+    <div class="popup">
+      <label for="admission-toggle" class="overlay"></label>
+      <div class="popup-content">
+        <h2>📝 Admission Form</h2>
+        <form id="admission-form" method="POST">
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email Address" required>
+          <input type="text" name="course" placeholder="Course Interested In" required>
+          <input type="text" name="phone" placeholder="Phone Number" required>
+          <textarea name="address" rows="3" placeholder="Address" required></textarea>
+          <button type="submit" name="submit">Submit</button>
+          <label for="admission-toggle" class="close-btn">&times;</label>
+        </form>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="facilities">
+    <h2>🏫 Our Facilities</h2>
+
+    <div class="facilities">
+
+      <div class="facility-card">
+        <div class="facility-name">Modern Infrastructure</div>
+        <div class="facility-desc">State-of-the-art buildings and student-friendly campus.</div>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-name">Digital Classrooms</div>
+        <div class="facility-desc">Smart classrooms equipped with latest technology.</div>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-name">Computer Lab</div>
+        <div class="facility-desc">High-speed internet and advanced software tools.</div>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-name">Library & Resources</div>
+        <div class="facility-desc">Wide collection of books, journals, and e-learning.</div>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-name">Experienced Faculty</div>
+        <div class="facility-desc">Dedicated teachers with expertise in their fields.</div>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-name">Large Campus Ground</div>
+        <div class="facility-desc">Spacious ground for sports, cultural events, and activities.</div>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-name">24×7 CCTV Security</div>
+        <div class="facility-desc">Safe and secure environment with continuous surveillance.</div>
+      </div>
+
+    </div>
+  </section>
+  <section id="faculty">
+    <h2>👩‍🏫 Our Faculty</h2>
+
+    <div class="faculty">
+
+      <div class="faculty-card">
+        <img src="Image/img57.jpg" alt="Faculty 1" class="faculty-img">
+        <div class="faculty-name">Mr. Rajata Singh</div>
+        <div class="faculty-subject">Head of Computer Science</div>
+        <div class="faculty-exp">10+ Years of Experience</div>
+
+
+      </div>
+
+      <div class="faculty-card">
+        <img src="Image/image2.jpg" alt="Faculty 2" class="faculty-img">
+        <div class="faculty-name">Prof. R. Gupta</div>
+        <div class="faculty-subject">Mathematics Lecturer</div>
+        <div class="faculty-exp">10+ Years of Experience</div>
+
+      </div>
+
+      <div class="faculty-card">
+        <img src="Image/image2.jpg" alt="Faculty 3" class="faculty-img">
+        <div class="faculty-name">Dr. S. Verma</div>
+        <div class="faculty-subject">Physics Professor</div>
+        <div class="faculty-exp">12+ Years of Experience</div>
+
+      </div>
+
+      <div class="faculty-card">
+        <img src="Image/image2.jpg" alt="Faculty 4" class="faculty-img">
+        <div class="faculty-name">Ms. P. Singh</div>
+        <div class="faculty-subject">Information Technology</div>
+        <div class="faculty-exp">8+ Years of Experience</div>
+
+      </div>
+
+    </div>
+  </section>
+  <section id="contact">
+    <h2>📞 Contact Us</h2>
+
+    <div class="contact">
+
+      <div class="contact-info">
+        <h3>NICE COLLEGE</h3>
+        <p><strong>📍 Address:</strong> Ghazipur, Peer Nagar Colony, Near DM House</p>
+        <p><strong>📧 Email:</strong> info@nicecollege.com</p>
+        <p><strong>📞 Phone:</strong> +91 98765 43210</p>
+        <p><strong>🕒 Timings:</strong> Mon - Sat (9:00 AM - 5:00 PM)</p>
+      </div>
+
+
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14642.186141067664!2d83.5598202!3d25.5706307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3991ff085194ff79%3A0x54f0540a1843d912!2sNICE%20College%20of%20Management%20%26%20E-Technology!5e0!3m2!1sen!2sin!4v1693378292340!5m2!1sen!2sin"
+          allowfullscreen="" loading="lazy">
+        </iframe>
+
+        <!-- Transparent overlay to make map clickable -->
+        <a href="https://www.google.com/maps/place/NICE+College+of+Management+%26+E-Technology/@25.570824,83.5626691,17z/"
+          target="_blank">View on Google Maps</a>
+      </div>
+
+    </div>
+
+  </section>
+  <footer>
+    <div class="footer-container">
+
+
+      <div class="footer-box">
+        <h3>Contact Us</h3>
+        <p>📍 Ghazipur, Peer Nagar Colony, Near DM House</p>
+        <p>📞 +91 98765 43210</p>
+        <p>📧 info@nicecollege.com</p>
+      </div>
+
+
+      <div class="footer-box">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+
+
+      <div class="footer-box">
+        <h3>Send a Message</h3>
+        <form class="contact-form" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" rows="3" placeholder="Your Message" required></textarea>
+          <button type="submit" name="send">Send</button>
+        </form>
+      </div>
+
+    </div>
+
+    <p class="copyright">© 2025 NICE COLLEGE. All Rights Reserved.</p>
+  </footer>
+</body>
+
+</html>
