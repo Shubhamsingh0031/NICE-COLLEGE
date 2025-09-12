@@ -478,4 +478,27 @@ footer {
 footer p {
   margin-top: 20px;
   font-size: 14px;
+
+}
+@media screen and (max-width: 768px) {
+  .course-card {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .course-name {
+    font-size: 16px;
+  }
+
+  .course-desc {
+    font-size: 13px;
+  }
+
+  .btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    min-width: 80px;
+  }
 }
