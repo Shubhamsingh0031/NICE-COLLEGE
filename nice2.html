@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -129,7 +130,12 @@
             border-radius: 50%;
             border: 3px solid #00509e;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
         }
 
         .profile-info {
@@ -156,7 +162,7 @@
             line-height: 1.4;
             text-align: justify;
         }
-        
+
 
         /* Gallery Section */
         .gallery-section {
@@ -250,7 +256,7 @@
             }
         }
 
-      
+
 
 
         @media (max-width: 768px) {
@@ -348,12 +354,17 @@
             .profile-info h3 {
                 font-size: 0.95rem;
             }
-             .profile-info p {
-        text-align: left;          /* Align text to the left to avoid uneven spacing */
-        word-wrap: break-word;     /* Allow words to break naturally */
-        overflow-wrap: break-word; /* Modern way to break words when needed */
-        hyphens: auto;             /* Add hyphenation where supported */
-    }
+
+            .profile-info p {
+                text-align: left;
+                /* Align text to the left to avoid uneven spacing */
+                word-wrap: break-word;
+                /* Allow words to break naturally */
+                overflow-wrap: break-word;
+                /* Modern way to break words when needed */
+                hyphens: auto;
+                /* Add hyphenation where supported */
+            }
 
             .profile-info .title {
                 font-size: 0.85rem;
@@ -363,9 +374,9 @@
                 height: 100px;
             }
         }
-        
     </style>
 </head>
+
 <body>
     <header>
         <h1>Nice College</h1>
@@ -375,7 +386,21 @@
     <div class="about">
         <h2>About Nice College</h2>
         <p class="c1">
-            <span class="highlight">NICE College</span> was established in <span class="highlight">1995</span> with a vision to provide <span class="highlight">quality higher education</span> in <span class="highlight">science</span>, <span class="highlight">technology</span>, and <span class="highlight">management</span>. Over the years, it has grown into a <span class="highlight">reputed institution</span> with <span class="highlight">modern infrastructure</span>, <span class="highlight">highly qualified faculty</span>, and a strong focus on <span class="highlight">research and innovation</span>. The college offers <span class="highlight">undergraduate</span>, <span class="highlight">postgraduate</span>, and <span class="highlight">professional programs</span>, ensuring <span class="highlight">holistic development</span> of students. With a mission to <span class="highlight">nurture talent</span> and <span class="highlight">instill values</span>, NICE College stands as a <span class="highlight">pillar of excellence</span> in the region. Our <span class="highlight">spacious campus</span>, <span class="highlight">world-class library</span>, <span class="highlight">modern laboratories</span>, and <span class="highlight">student-friendly environment</span> create the perfect setting for <span class="highlight">academic and personal growth</span>.
+            <span class="highlight">NICE College</span> was established in <span class="highlight">1995</span> with a
+            vision to provide <span class="highlight">quality higher education</span> in <span
+                class="highlight">science</span>, <span class="highlight">technology</span>, and <span
+                class="highlight">management</span>. Over the years, it has grown into a <span class="highlight">reputed
+                institution</span> with <span class="highlight">modern infrastructure</span>, <span
+                class="highlight">highly qualified faculty</span>, and a strong focus on <span
+                class="highlight">research and innovation</span>. The college offers <span
+                class="highlight">undergraduate</span>, <span class="highlight">postgraduate</span>, and <span
+                class="highlight">professional programs</span>, ensuring <span class="highlight">holistic
+                development</span> of students. With a mission to <span class="highlight">nurture talent</span> and
+            <span class="highlight">instill values</span>, NICE College stands as a <span class="highlight">pillar of
+                excellence</span> in the region. Our <span class="highlight">spacious campus</span>, <span
+                class="highlight">world-class library</span>, <span class="highlight">modern laboratories</span>, and
+            <span class="highlight">student-friendly environment</span> create the perfect setting for <span
+                class="highlight">academic and personal growth</span>.
         </p>
         <a href="#more" class="btn">View More</a>
     </div>
@@ -388,7 +413,8 @@
             <div class="profile-info">
                 <h3>Mr. Amarnath Singh</h3>
                 <p class="title">Director</p>
-                <p>25+ years of experience in academic leadership, guiding NICE College towards innovation and excellence.</p>
+                <p>25+ years of experience in academic leadership, guiding NICE College towards innovation and
+                    excellence.</p>
             </div>
         </div>
 
@@ -397,12 +423,13 @@
             <div class="profile-info">
                 <h3>Mr. Shyam Singh</h3>
                 <p class="title">Managing Director</p>
-                <p>Focused on strategic growth, student empowerment, and building strong industry-academic partnerships.</p>
+                <p>Focused on strategic growth, student empowerment, and building strong industry-academic partnerships.
+                </p>
             </div>
         </div>
 
         <div class="profile-card">
-            <img src="Image/img57.jpg" alt="HOD" class="profile-img" />
+            <img src="Image/img57.5.jpg" alt="HOD" class="profile-img" />
             <div class="profile-info">
                 <h3>Mr. Rajata Singh</h3>
                 <p class="title">Head of Department (Computer Science)</p>
@@ -415,7 +442,8 @@
             <div class="profile-info">
                 <h3>Mr. Sparsh Sharma</h3>
                 <p class="title">Assistant Professor</p>
-                <p>Dedicated educator inspiring students in mathematics and logical reasoning with interactive teaching methods.</p>
+                <p>Dedicated educator inspiring students in mathematics and logical reasoning with interactive teaching
+                    methods.</p>
             </div>
         </div>
     </div>
@@ -438,8 +466,8 @@
             <img src="Image/img20.jpg" alt="">
             <img src="Image/img40.png" alt="">
             <img src="Image/img37.jpg" alt="">
-             <img src="Image/img71.jpg" alt="">
-              <img src="Image/img72.jpg" alt="">
+            <img src="Image/img71.jpg" alt="">
+            <img src="Image/img72.jpg" alt="">
         </div>
     </section>
 
@@ -453,4 +481,5 @@
         </div>
     </footer>
 </body>
+
 </html>
