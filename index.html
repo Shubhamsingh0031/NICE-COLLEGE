@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NICE COLLEGE - Portfolio</title>
+  <title>NICE COLLEGE Ghazipur</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -27,6 +27,11 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
+  <!-- Wallpaper Overlay -->
+  <div id="wallpaper-overlay">
+    <img src="Image/img9.webp" alt="Welcome to NICE College">
+  </div>
+
   <section id="about">
     <div class="container">
       <h1>🏫 About NICE COLLEGE</h1>
@@ -119,7 +124,8 @@
       <label for="admission-toggle" class="overlay"></label>
       <div class="popup-content">
         <h2>📝 Admission Form</h2>
-        <form id="admission-form" method="POST">
+        <form action="https://api.web3forms.com/submit" method="POST" id="admission-form">
+          <input type="hidden" name="access_key" value="90fd6f90-0931-4918-a3f3-b5ff7e32c992">
           <input type="text" name="name" placeholder="Full Name" required>
           <input type="email" name="email" placeholder="Email Address" required>
           <input type="text" name="course" placeholder="Course Interested In" required>
@@ -253,8 +259,6 @@
         <p>📞 +91 98765 43210</p>
         <p>📧 info@nicecollege.com</p>
       </div>
-
-
       <div class="footer-box">
         <h3>Follow Us</h3>
         <div class="social-icons">
@@ -264,24 +268,32 @@
           <a href="#"><i class="fab fa-telegram"></i></a>
         </div>
       </div>
-
-
       <div class="footer-box">
-        <h3>Send a Message</h3>
-        <form class="contact-form" method="POST">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <textarea name="message" rows="3" placeholder="Your Message" required></textarea>
-          <button type="submit" name="send">Send</button>
-        </form>
+        <h3>Latest Notices</h3>
+        <div class="notice-box">
+          <marquee direction="up" scrollamount="5" onmouseover="this.stop();" onmouseout="this.start();">
+            <p>📢 Admission open for BCA, PGDCA, O-Level, CCC (2025-26 Batch).</p>
+            <p>🎓 College Annual Fest scheduled for November 2025.</p>
+            <p>📝 Mid-Semester Exams start from 15th October 2025.</p>
+            <p>📄 New Library resources available for students.</p>
+            <p>⚡ Workshop on AI & Machine Learning – Register Now!</p>
+            <p>This portfolio is designed and developed by <strong>Shubham Singh</strong>.</p>
+          </marquee>
+        </div>
       </div>
 
-    </div>
 
-    <p class="copyright">© 2025 NICE COLLEGE. All Rights Reserved.</p>
+      <p class="copyright">© 2025 NICE COLLEGE. All Rights Reserved.</p>
   </footer>
 
 </body>
+<script>
+  // Hide wallpaper overlay when user clicks anywhere
+  document.getElementById("wallpaper-overlay").addEventListener("click", function () {
+    this.style.display = "none";
+  });
+</script>
+
 
 
 </html>
