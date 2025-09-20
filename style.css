@@ -11,9 +11,6 @@ body {
   color: #333;
 }
 
-/* =============================
-   POPUP STYLES (Admission Form)
-============================= */
 .popup {
   position: fixed;
   top: 0;
@@ -91,9 +88,6 @@ body {
   color: #004080;
 }
 
-/* =============================
-   WALLPAPER OVERLAY (Logo Popup)
-============================= */
 #wallpaper-overlay {
   position: fixed;
   top: 0;
@@ -127,9 +121,6 @@ body {
   }
 }
 
-/* =============================
-   HEADER
-============================= */
 /* =============================
    HEADER BASE
 ============================= */
@@ -214,12 +205,10 @@ body {
   cursor: pointer;
   transition: background 0.3s;
 }
+
 .btn-blue:hover {
   background: #1d447d;
 }
-
-/* Hamburger (hidden desktop) */
-/* Hide on desktop */
 #menu-toggle {
   display: none;
 }
@@ -227,17 +216,16 @@ body {
   display: none;
 }
 
-/* On small screens */
 @media (max-width: 768px) {
   .main-header {
-    position: relative; /* so hamburger positions inside header */
+    position: relative;
   }
 
   .menu-btn {
     display: block;
     position: absolute;
-    top: 10px;     /* distance from top of header */
-    right: 15px;   /* distance from right of header */
+    top: 3px;   
+    right: 10px;  
     font-size: 28px;
     cursor: pointer;
     color: #fff;
@@ -251,7 +239,7 @@ body {
     width: 100%;
     padding: 15px;
     border-radius: 0 0 8px 8px;
-    margin-top: 50px; /* push menu below logo */
+    margin-top: 50px; 
   }
 
   #menu-toggle:checked ~ .navbar {
@@ -265,9 +253,6 @@ body {
   }
 }
 
-/* =============================
-   RESPONSIVE (Mobile)
-============================= */
 @media (max-width: 768px) {
   .main-header {
     flex-wrap: wrap;
@@ -300,10 +285,6 @@ body {
   }
 }
 
-
-/* =============================
-   BACK TO TOP BUTTON
-============================= */
 .back-to-top {
   position: fixed;
   bottom: 25px;
@@ -324,9 +305,6 @@ body {
   transform: scale(1.1);
 }
 
-/* =============================
-   SECTIONS (Generic)
-============================= */
 section {
   padding: 40px 20px;
 }
@@ -338,9 +316,6 @@ section h2 {
   color: #004080;
 }
 
-/* =============================
-   ABOUT SECTION
-============================= */
 #about .container {
   max-width: 900px;
   margin: auto;
