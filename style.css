@@ -130,6 +130,9 @@ body {
 /* =============================
    HEADER
 ============================= */
+/* =============================
+   HEADER BASE
+============================= */
 .main-header {
   display: flex;
   justify-content: space-between;
@@ -139,15 +142,15 @@ body {
   padding: 10px 25px;
   flex-wrap: wrap;
   position: relative;
+  z-index: 100;
 }
 
-/* Logo & Text */
+/* Logo */
 .logo-area {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-
 .logo-area img {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -157,46 +160,35 @@ body {
   transform: scale(1.15);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
-
 .college-logo {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: #fff;
   padding: 3px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
 }
-
 .college-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   line-height: 1.2;
 }
-
-.college-text .college-name {
-  font-size: 26px;
+.college-name {
+  font-size: 24px;
   font-weight: bold;
-  color: #fff;
   margin: 0;
 }
-
-.college-text .college-sub {
-  font-size: 10px;
+.college-sub {
+  font-size: 11px;
   color: #ddd;
-  margin-top: 4px;
-  letter-spacing: 0.5px;
+  margin-top: 2px;
 }
 
-/* =============================
-   NAVBAR
-============================= */
+/* Navigation */
 .navbar {
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  gap: 20px;
 }
-
 .navbar a {
   color: #fff;
   text-decoration: none;
@@ -204,58 +196,110 @@ body {
   font-weight: bold;
   transition: color 0.3s;
 }
-
 .navbar a:hover {
   color: #ffd700;
 }
 
-/* =============================
-   HEADER BUTTONS
-============================= */
+/* Apply Online Button */
 .header-buttons {
   display: flex;
-  gap: 8px;
+  align-items: center;
 }
-
-.header-buttons .btn-nav {
-  background: transparent;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.header-buttons .btn-blue {
+.btn-blue {
   background: #2a5ca8;
   color: #fff;
-  padding: 6px 12px;
+  padding: 8px 16px;
   border-radius: 6px;
-  text-decoration: none;
   font-weight: bold;
+  cursor: pointer;
   transition: background 0.3s;
 }
-
-.header-buttons .btn-blue:hover {
+.btn-blue:hover {
   background: #1d447d;
 }
 
-/* =============================
-   HAMBURGER MENU
-============================= */
+/* Hamburger (hidden desktop) */
+/* Hide on desktop */
 #menu-toggle {
   display: none;
 }
-
 .menu-btn {
   display: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: #fff;
-  position: absolute;
-  top: 20px;
-  right: 20px;
 }
+
+/* On small screens */
+@media (max-width: 768px) {
+  .main-header {
+    position: relative; /* so hamburger positions inside header */
+  }
+
+  .menu-btn {
+    display: block;
+    position: absolute;
+    top: 10px;     /* distance from top of header */
+    right: 15px;   /* distance from right of header */
+    font-size: 28px;
+    cursor: pointer;
+    color: #fff;
+    z-index: 200;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    background: #004080;
+    width: 100%;
+    padding: 15px;
+    border-radius: 0 0 8px 8px;
+    margin-top: 50px; /* push menu below logo */
+  }
+
+  #menu-toggle:checked ~ .navbar {
+    display: flex;
+  }
+
+  .header-buttons {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+
+/* =============================
+   RESPONSIVE (Mobile)
+============================= */
+@media (max-width: 768px) {
+  .main-header {
+    flex-wrap: wrap;
+  }
+  .menu-btn {
+    display: none;
+    
+  }
+  .navbar {
+    display: none;
+    flex-direction: column;
+    background: #004080;
+    width: 100%;
+    padding: 15px;
+    border-radius: 0 0 8px 8px;
+    margin-top: 10px;
+  }
+  .navbar a {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    text-align: center;
+  }
+  #menu-toggle:checked ~ .navbar {
+    display: flex;
+  }
+  .header-buttons {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+
 
 /* =============================
    BACK TO TOP BUTTON
