@@ -131,8 +131,8 @@ body {
   background: #004080;
   color: #fff;
   padding: 10px 25px;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   flex-wrap: wrap;
   position: relative;
   z-index: 100;
@@ -767,3 +767,4 @@ footer p.copyright {
     font-size: 12px;
   }
 }
+
