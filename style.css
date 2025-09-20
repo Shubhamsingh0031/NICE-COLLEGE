@@ -11,7 +11,9 @@ body {
   color: #333;
 }
 
-/* Admission Popup Styles */
+/* =============================
+   POPUP STYLES (Admission Form)
+============================= */
 .popup {
   position: fixed;
   top: 0;
@@ -89,42 +91,16 @@ body {
   color: #004080;
 }
 
-
-/* ===== Header ===== */
-header {
-  background: #004080;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-}
-
-header img {
-  border-radius: 50%;
-  margin-bottom: 10px;
-  padding: 5px;
-  background: #fff;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8),
-    0 0 10px rgba(255, 255, 255, 0.6),
-    0 0 15px rgba(255, 255, 255, 0.4);
-
-}
-
-header h1 {
-  font-size: 28px;
-  margin: 5px 0;
-}
-
-header p {
-  font-size: 14px;
-}
-/* ===== Wallpaper Overlay ===== */
+/* =============================
+   WALLPAPER OVERLAY (Logo Popup)
+============================= */
 #wallpaper-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.9); /* dim background */
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -135,32 +111,138 @@ header p {
   max-width: 80%;
   max-height: 80%;
   border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   animation: fadeIn 1s ease-in-out;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-
-
-nav {
-  margin-top: 15px;
+/* =============================
+   HEADER
+============================= */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #004080;
+  color: #fff;
+  padding: 10px 25px;
+  flex-wrap: wrap;
+  position: relative;
 }
 
-nav a {
+/* Logo & Text */
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-area img {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-area img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.college-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #fff;
+  padding: 3px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.college-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.college-text .college-name {
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+}
+
+.college-text .college-sub {
+  font-size: 10px;
+  color: #ddd;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* =============================
+   NAVBAR
+============================= */
+.navbar {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.navbar a {
   color: #fff;
   text-decoration: none;
-  margin: 0 12px;
+  font-size: 14px;
   font-weight: bold;
+  transition: color 0.3s;
 }
 
-nav a:hover {
+.navbar a:hover {
   color: #ffd700;
 }
 
+/* =============================
+   HEADER BUTTONS
+============================= */
+.header-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.header-buttons .btn-nav {
+  background: transparent;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header-buttons .btn-blue {
+  background: #2a5ca8;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.header-buttons .btn-blue:hover {
+  background: #1d447d;
+}
+
+/* =============================
+   HAMBURGER MENU
+============================= */
 #menu-toggle {
   display: none;
 }
@@ -175,33 +257,32 @@ nav a:hover {
   right: 20px;
 }
 
-@media screen and (max-width: 768px) {
-  nav {
-    display: none;
-    flex-direction: column;
-    background: #001F3f;
-    padding: 15px;
-    border-radius: 8px;
-  }
-
-  nav a {
-    display: block;
-    margin: 10px 0;
-    text-align: center;
-  }
-
-  /* Show hamburger icon */
-  .menu-btn {
-    display: block;
-  }
-
-  /* Toggle nav when checkbox is checked */
-  #menu-toggle:checked~nav {
-    display: flex;
-  }
+/* =============================
+   BACK TO TOP BUTTON
+============================= */
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #004080;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 50%;
+  font-size: 18px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: background 0.3s, transform 0.3s;
+  z-index: 1000;
 }
 
-/* ===== Sections ===== */
+.back-to-top:hover {
+  background: #00264d;
+  transform: scale(1.1);
+}
+
+/* =============================
+   SECTIONS (Generic)
+============================= */
 section {
   padding: 40px 20px;
 }
@@ -213,7 +294,9 @@ section h2 {
   color: #004080;
 }
 
-/* ===== About Section ===== */
+/* =============================
+   ABOUT SECTION
+============================= */
 #about .container {
   max-width: 900px;
   margin: auto;
@@ -232,28 +315,32 @@ section h2 {
   color: #004080;
 }
 
-/* ===== Course Cards ===== */
+/* =============================
+   COURSES
+============================= */
 #courses {
   background: #f1f7ff;
 }
 
-.nice {
+.nice,
+.nice1 {
   display: block;
   width: fit-content;
   margin: 25px auto 0 auto;
   padding: 12px 28px;
   border: none;
   border-radius: 8px;
-  background: linear-gradient(90deg, #0066cc, #0b8bff);
-  color: #fff;
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
   text-decoration: none;
-  /* ✅ removes underline */
   text-align: center;
-  /* center text inside */
   transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.nice {
+  background: linear-gradient(90deg, #0066cc, #0b8bff);
+  color: #fff;
 }
 
 .nice:hover {
@@ -262,29 +349,14 @@ section h2 {
 }
 
 .nice1 {
-  display: block;
-  width: fit-content;
-  margin: 25px auto 0 auto;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 8px;
   background: #004080;
   color: #fff;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  text-decoration: none;
-  /* ✅ removes underline */
-  text-align: center;
-  /* center text inside */
-  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .nice1:hover {
   transform: translateY(-3px);
   background: #003366;
 }
-
 
 .course-card {
   display: flex;
@@ -332,7 +404,9 @@ section h2 {
   background: #003366;
 }
 
-/* ===== Facilities ===== */
+/* =============================
+   FACILITIES
+============================= */
 .facilities {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -363,7 +437,9 @@ section h2 {
   margin-bottom: 8px;
 }
 
-/* ===== Faculty ===== */
+/* =============================
+   FACULTY
+============================= */
 .faculty {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -386,7 +462,6 @@ section h2 {
   width: 120px;
   height: 120px;
   object-fit: cover;
-  border-radius: 50%;
   border: 3px solid #004080;
   margin-bottom: 12px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
@@ -404,7 +479,9 @@ section h2 {
   margin: 5px 0;
 }
 
-/* ===== Contact Section ===== */
+/* =============================
+   CONTACT
+============================= */
 .contact {
   display: flex;
   flex-wrap: wrap;
@@ -428,7 +505,9 @@ section h2 {
   border: none;
 }
 
-/* ===== Footer ===== */
+/* =============================
+   FOOTER
+============================= */
 footer {
   background: #00264d;
   color: #fff;
@@ -446,31 +525,15 @@ footer {
   margin: auto;
 }
 
-@media screen and (max-width: 768px) {
-  nav a {
-    display: block;
-    margin: 8px 0;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  header h1 {
-    font-size: 22px;
-  }
-
-  header p {
-    font-size: 12px;
-  }
-}
 .notice-box {
   background: white;
   padding: 15px;
   border-radius: 8px;
-  width: 350px;     /* fixed width */
-  height: 180px;    /* fixed height */
+  width: 350px;
+  height: 180px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  margin: auto;     /* centers it inside footer box */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin: auto;
 }
 
 .notice-box p {
@@ -480,7 +543,6 @@ footer {
   padding-left: 5px;
   border-left: 3px solid #ffd700;
 }
-
 
 .footer-box {
   flex: 1;
@@ -535,7 +597,109 @@ footer p.copyright {
   text-align: center !important;
 }
 
+/* =============================
+   NAVBAR RESPONSIVE BASE
+============================= */
+.navbar {
+  display: flex;
+  gap: 20px;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu-btn {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ✅ Small screen styles */
+@media (max-width: 768px) {
+  .header-buttons {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    display: none;
+    flex-direction: column;
+    background: #004080;
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .navbar a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .menu-btn {
+    display: block;
+    color: white;
+    margin-left: auto;
+    padding: 10px;
+  }
+
+  /* ✅ Show menu when checked */
+  #menu-toggle:checked~.navbar {
+    display: flex;
+  }
+}
+
+/* =============================
+   EXTRA MOBILE ADJUSTMENTS
+============================= */
+@media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 22px;
+  }
+
+  header p {
+    font-size: 12px;
+  }
+}
+
+/* =============================
+   RESPONSIVE (Mobile)
+============================= */
 @media screen and (max-width: 768px) {
+  .navbar {
+    display: none;
+    flex-direction: column;
+    background: #004080;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    width: 200px;
+  }
+
+  .navbar a {
+    display: block;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  #menu-toggle:checked~.navbar {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
   .course-card {
     flex-direction: row;
     justify-content: space-between;
@@ -558,4 +722,13 @@ footer p.copyright {
   }
 }
 
+@media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 22px;
+  }
+
+  header p {
+    font-size: 12px;
+  }
+}
 
