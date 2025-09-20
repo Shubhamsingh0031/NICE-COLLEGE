@@ -16,32 +16,34 @@
   <body id="top">
 
     <header class="main-header">
-      <div class="logo-area">
-        <img src="Image/image1.png" alt="Nice College Logo" class="college-logo">
-        <div class="college-text">
-          <h1 class="college-name">NICE COLLEGE</h1>
-          <p class="college-sub">of Management &amp; E-Technology</p>
-          <p class="college-sub">PEERNAGAR GAHZIPUR , UP</p>
-        </div>
-      </div>
-      <!-- Hamburger Menu for Small Screens -->
-      <input type="checkbox" id="menu-toggle">
-      <label for="menu-toggle" class="menu-btn"><i class="fas fa-bars"></i></label>
+  <!-- Logo -->
+  <div class="logo-area">
+    <img src="Image/image1.png" alt="Nice College Logo" class="college-logo">
+    <div class="college-text">
+      <h1 class="college-name">NICE COLLEGE</h1>
+      <p class="college-sub">of Management &amp; E-Technology</p>
+      <p class="college-sub">PEERNAGAR GHAZIPUR, UP</p>
+    </div>
+  </div>
 
-      <nav class="navbar">
-        <a href="#about">About</a>
-        <a href="#courses">Courses</a>
-        <a href="#facilities">Facilities</a>
-        <a href="#faculty">Faculty</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <!-- Hamburger (mobile) -->
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="menu-btn"><i class="fas fa-bars"></i></label>
 
-      <!-- Right Buttons -->
-      <!-- Right Buttons -->
-      <div class="header-buttons">
-        <label for="admission-toggle" class="btn-blue">Apply Online</label>
-      </div>
-    </header>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="#about">About</a>
+    <a href="#courses">Courses</a>
+    <a href="#facilities">Facilities</a>
+    <a href="#faculty">Faculty</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Apply Button -->
+  <div class="header-buttons">
+    <label for="admission-toggle" class="btn-blue">Apply Online</label>
+  </div>
+</header>
     <!-- Wallpaper Overlay -->
     <div id="wallpaper-overlay">
       <img src="Image/img9.webp" alt="Welcome to NICE College">
@@ -311,5 +313,10 @@
     document.getElementById("wallpaper-overlay").addEventListener("click", function () {
       this.style.display = "none";
     });
+    document.querySelectorAll(".navbar a").forEach(link => {
+    link.addEventListener("click", () => {
+      document.getElementById("menu-toggle").checked = false;
+    });
+  });
   </script>
 </html>
