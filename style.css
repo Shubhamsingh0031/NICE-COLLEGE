@@ -131,6 +131,8 @@ body {
   background: #004080;
   color: #fff;
   padding: 10px 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
   flex-wrap: wrap;
   position: relative;
   z-index: 100;
@@ -142,6 +144,7 @@ body {
   align-items: center;
   gap: 15px;
 }
+
 .logo-area img {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -151,6 +154,7 @@ body {
   transform: scale(1.15);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
+
 .college-logo {
   width: 70px;
   height: 70px;
@@ -159,16 +163,19 @@ body {
   padding: 3px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
 }
+
 .college-text {
   display: flex;
   flex-direction: column;
   line-height: 1.2;
 }
+
 .college-name {
   font-size: 24px;
   font-weight: bold;
   margin: 0;
 }
+
 .college-sub {
   font-size: 11px;
   color: #ddd;
@@ -180,6 +187,7 @@ body {
   display: flex;
   gap: 20px;
 }
+
 .navbar a {
   color: #fff;
   text-decoration: none;
@@ -187,6 +195,7 @@ body {
   font-weight: bold;
   transition: color 0.3s;
 }
+
 .navbar a:hover {
   color: #ffd700;
 }
@@ -196,6 +205,7 @@ body {
   display: flex;
   align-items: center;
 }
+
 .btn-blue {
   background: #2a5ca8;
   color: #fff;
@@ -209,9 +219,11 @@ body {
 .btn-blue:hover {
   background: #1d447d;
 }
+
 #menu-toggle {
   display: none;
 }
+
 .menu-btn {
   display: none;
 }
@@ -224,8 +236,8 @@ body {
   .menu-btn {
     display: block;
     position: absolute;
-    top: 3px;   
-    right: 10px;  
+    top: 2px;
+    right: 10px;
     font-size: 28px;
     cursor: pointer;
     color: #fff;
@@ -239,10 +251,10 @@ body {
     width: 100%;
     padding: 15px;
     border-radius: 0 0 8px 8px;
-    margin-top: 50px; 
+    margin-top: 50px;
   }
 
-  #menu-toggle:checked ~ .navbar {
+  #menu-toggle:checked~.navbar {
     display: flex;
   }
 
@@ -257,10 +269,12 @@ body {
   .main-header {
     flex-wrap: wrap;
   }
+
   .menu-btn {
     display: none;
-    
+
   }
+
   .navbar {
     display: none;
     flex-direction: column;
@@ -270,14 +284,17 @@ body {
     border-radius: 0 0 8px 8px;
     margin-top: 10px;
   }
+
   .navbar a {
     padding: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     text-align: center;
   }
-  #menu-toggle:checked ~ .navbar {
+
+  #menu-toggle:checked~.navbar {
     display: flex;
   }
+
   .header-buttons {
     width: 100%;
     justify-content: center;
@@ -750,4 +767,3 @@ footer p.copyright {
     font-size: 12px;
   }
 }
-
