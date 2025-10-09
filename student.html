@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Multi Year & Multi Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e3f2fd;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            /* padding-top: 30px; */
+        }
+
+        .container {
+            background: white;
+            width: 900px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 25px 40px;
+        }
+
+        h1,
+        h2 {
+            color: #0d47a1;
+            margin: 10px 0;
+        }
+
+        .we-back {
+            color: #0d47a1;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        input,
+        select {
+            width: 250px;
+            padding: 8px;
+            margin: 8px;
+            border-radius: 8px;
+            border: 1px solid #1565c0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #0d47a1;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #002171;
+        }
+
+        .profile {
+            display: none;
+            margin-top: 25px;
+            border-top: 2px solid #1565c0;
+            padding-top: 20px;
+        }
+
+        .profile img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            float: left;
+            margin-right: 20px;
+        }
+
+        .profile-info {
+            float: left;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        .card {
+            flex: 1 1 200px;
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #0d47a1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #1565c0;
+            text-align: center;
+        }
+
+        th {
+            background: #1565c0;
+            color: white;
+        }
+
+        ul {
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 10px;
+            }
+
+            .container {
+                width: 95%;
+                padding: 20px 15px;
+            }
+
+            h1,
+            h2,
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            .card {
+                flex: 1 1 100%;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            .profile img {
+                width: 100px;
+                height: 100px;
+            }
+
+            button {
+                font-size: 15px;
+                max-width: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            h1,
+            h2,
+            h3 {
+                font-size: 1rem;
+            }
+
+            .container {
+                border-radius: 10px;
+                box-shadow: none;
+            }
+
+            input,
+            select {
+                max-width: 100%;
+                font-size: 14px;
+            }
+
+            .card {
+                padding: 10px;
+            }
+
+            .card h3 {
+                font-size: 16px;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+            button {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="we-back">Welcome Back!</h1>
+        <h3>Please login with your Roll Number and DOB to continue.</h3>
+
+        <div class="input-group">
+            <input type="text" id="roll" placeholder="Roll Number">
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="dob" placeholder="Date of Birth (DD/MM/YYYY)">
+        </div>
+        <!-- <button onclick="logout()">Logout</button> -->
+        <button onclick="login()">Sign In</button>
+
+        <div id="yearSemSelection">
+            <h2>Select Year & Semester</h2>
+            <select id="semester">
+                <option value="">--Select Semester--</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+                <option value="3">Semester 3</option>
+                <option value="4">Semester 4</option>
+                <option value="5">Semester 5</option>
+                <option value="6">Semester 6</option>
+            </select>
+            <button onclick="showStudentData()">Show Data</button>
+        </div>
+
+
+        <!-- Student Profile Section -->
+        <div class="profile" id="profile">
+            <img id="profileImage" src="" alt="Student Image">
+            <div class="profile-info">
+                <h2 id="name"></h2>
+                <p><b>Roll Number:</b> <span id="rollInfo"></span></p>
+                <p><b>DOB:</b> <span id="dobInfo"></span></p>
+                <p><b>Email:</b> <span id="email"></span></p>
+                <p><b>Course:</b> <span id="course"></span></p>
+                <p><b>Institution:</b> <span id="institution"></span></p>
+                <p><b>Semester:</b> <span id="semInfo"></span></p>
+            </div>
+            <div class="clear"></div>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>Attendance</h3>
+                    <p id="attendance"></p>
+                </div>
+                <div class="card">
+                    <h3>Performance</h3>
+                    <p id="performance"></p>
+                </div>
+                <div class="card">
+                    <h3>University Result</h3>
+                    <p id="result"></p>
+                </div>
+            </div>
+
+            <h2>Courses</h2>
+            <table id="coursesTable">
+                <tr>
+                    <th>SUB CODE</th>
+                    <th>Subject</th>
+                    <th>Teacher</th>
+                </tr>
+            </table>
+
+            <h2>Assignments / Projects</h2>
+            <table id="assignmentsTable">
+                <tr>
+                    <th>SUB CODE</th>
+                    <th>Project / Assignment</th>
+                    <th>Status</th>
+                </tr>
+            </table>
+
+            <h2>Notices / Announcements</h2>
+            <ul id="notices"></ul>
+        </div>
+    </div>
+
+    <script>
+        // Hide year/semester section until login
+        //document.getElementById("yearSemSelection").style.display = "none";
+        // Create semester object
+        function makeSemester(courses, assignments, performance, result, notices, attendance) {
+        return {
+            attendance,
+            performance,
+            result,
+            courses,
+            assignments,
+            notices
+        };
+    }
+
+        // Student data
+        const students = [
+            {
+                // 1 Student
+                name: "Shubham Singh",
+                roll: "24543111051",
+                dob: "12/07/2003",
+                image: "Image/ims_1.jpeg",
+                email: "shubhamsingh8112323815@gmail.com",
+                course: "BCA - 3 Years",
+                institution: "(543) ATAM PRAKASH ADARSH MAHAVIDYALAYA, ARSADPUR, JANGIPUR, GHAZIPUR",
+                data: {
+                    "1": makeSemester(
+                        [
+                            { code: "BCA-101", subject: "PC SOFTWARE", teacher: "Pooja Ma'am" },
+                            { code: "BCA-102", subject: "COMPUTER ORGANIZATION", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-103", subject: "PROGRAMMING PRINCIPLES & C LANGUAGE", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-104", subject: "FUNDAMENTAL OF IT", teacher: "Pooja Ma'am" }
+                        ],
+                        [
+                            { code: "BCA-L11", name: "PC SOFTWARE LAB", status: "Submitted" },
+                            { code: "BCA-L12", name: "PROGRAMMING IN C LAB", status: "Submitted" }
+                        ],
+                        "Excellent",  //Performance
+                        "498 / 600", //University Result
+                        ["Completed all tasks successfully."], //Notices / Announcements
+                           "96%" // ✅ Attendance
+                    ),
+                    "2": makeSemester(
+                        [
+                            { code: "BCA-201", subject: "OBJECT MODELING & C++ PROGRAMMING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-202", subject: "SYSTEM ANALYSIS AND DESIGN", teacher: "Pooja Ma'am" },
+                            { code: "BCA-203", subject: "DATA AND FILE STRUCTURE USING C &C++", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-204", subject: "DISCRETE MATHEMATICS", teacher: "Mr. Krishna singh" }
+                        ],
+                        [
+                            { code: "BCA-L21", name: "C++ LAB", status: "Submitted" },
+                            { code: "BCA-L22", name: "DS LAB", status: "Submitted" }
+                        ],
+                        "Good+",
+                        "476 / 600",
+                        ["Completed all tasks successfully."],
+                           "90%" // ✅ Attendance
+                    ),
+                    "3": makeSemester(
+                        [
+                            { code: "BCA-301", subject: "COMPUTER BASED NUMERICAL & STATISTICAL TECHNIQUES", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-302", subject: "SOFTWARE ENGINEERING", teacher: "Pooja Ma'am" },
+                            { code: "BCA-303", subject: "PRINCIPLES OF OPERATING SYSTEM", teacher: "Pooja Ma'am" },
+                            { code: "BCA-304", subject: "JAVA PROGRAMMING", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L31", name: "CBNST LAB", status: "Submitted" },
+                            { code: "BCA-L32", name: "JAVA LAB", status: "Submitted" }
+                        ],
+                        "Good",
+                        "465 / 600",
+                        ["Completed all tasks successfully."],
+                        "80%" // ✅ Attendance
+                    ),
+                    "4": makeSemester(
+                        [
+                            { code: "BCA-401", subject: "DESIGN & ANALYSIS OF ALGORITHM", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-402", subject: "DATA BASE MANAGEMENT SYSTEM", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-403", subject: "OPTIMIZATION TECHNIQUES", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-404", subject: "COMPUTER GRAPHICS & ANIMATION", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L41", name: "DBMS LAB", status: "Submitted" },
+                            { code: "BCA-L42", name: "GRAPHICS LAB", status: "Submitted" }
+                        ],
+                        "Very Good",
+                        "489 / 600",
+                        ["Completed all tasks successfully."],
+                        "85%" // ✅ Attendance
+                    ),
+                    "5": makeSemester(
+                        [
+                            { code: "BCA-501", subject: "WEB DESIGN", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-502", subject: "DATA MINING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-503", subject: ".NET FRAMEWORK AND C# ", teacher: "Mr. Rajat Singh" },
+                        ],
+                        [
+                            { code: "BCA-P51", name: "BCA PROJECT - I", status: "Under Review" },
+                            { code: "BCA-L51", name: "WEB DESIGN LAB", status: "Pending" },
+                            { code: "BCA-L52", name: ".NET LAB", status: "Pending" }
+                        ],
+                        "In Progress",
+                        "N/A", // Result not declared yet
+                        ["5th semester ongoing", "Exams scheduled next month", "Assignments submission deadline: 15 oct 2025"],
+                         "Not-update" // ✅ Attendance
+                    )
+                }
+            },
+            {
+                // 2 Student
+                name: "ABHISHEK KUMAR",
+                roll: "24543111043",
+                dob: "13/12/2004",
+                image: "Image/ims_3.jpg",
+                email: "abhishekkumar7052ndj@gmail.com",
+                course: "BCA - 3 Years",
+                institution: "(543) ATAM PRAKASH ADARSH MAHAVIDYALAYA, ARSADPUR, JANGIPUR, GHAZIPUR",
+                data: {
+                    "1": makeSemester(
+                        [
+                            { code: "BCA-101", subject: "PC SOFTWARE", teacher: "Pooja Ma'am" },
+                            { code: "BCA-102", subject: "COMPUTER ORGANIZATION", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-103", subject: "PROGRAMMING PRINCIPLES & C LANGUAGE", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-104", subject: "FUNDAMENTAL OF IT", teacher: "Pooja Ma'am" }
+                        ],
+                        [
+                            { code: "BCA-L11", name: "PC SOFTWARE LAB", status: "Submitted" },
+                            { code: "BCA-L12", name: "PROGRAMMING IN C LAB", status: "Submitted" }
+                        ],
+                        "Very Good",
+                        "489 / 600",
+                        ["Completed all tasks successfully."],
+                         "85%" // ✅ Attendance
+                    ),
+                  "2": makeSemester(
+                        [
+                            { code: "BCA-201", subject: "OBJECT MODELING & C++ PROGRAMMING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-202", subject: "SYSTEM ANALYSIS AND DESIGN", teacher: "Pooja Ma'am" },
+                            { code: "BCA-203", subject: "DATA AND FILE STRUCTURE USING C &C++", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-204", subject: "DISCRETE MATHEMATICS", teacher: "Mr. Krishna singh" }
+                        ],
+                        [
+                            { code: "BCA-L21", name: "C++ LAB", status: "Submitted" },
+                            { code: "BCA-L22", name: "DS LAB", status: "Submitted" }
+                        ],
+                        "Good+",
+                        "473 / 600",
+                        ["Completed all tasks successfully."],
+                         "75%" // ✅ Attendance
+                    ),
+                      "3": makeSemester(
+                        [
+                            { code: "BCA-301", subject: "COMPUTER BASED NUMERICAL & STATISTICAL TECHNIQUES", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-302", subject: "SOFTWARE ENGINEERING", teacher: "Pooja Ma'am" },
+                            { code: "BCA-303", subject: "PRINCIPLES OF OPERATING SYSTEM", teacher: "Pooja Ma'am" },
+                            { code: "BCA-304", subject: "JAVA PROGRAMMING", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L31", name: "CBNST LAB", status: "Submitted" },
+                            { code: "BCA-L32", name: "JAVA LAB", status: "Submitted" }
+                        ],
+                        "Good",
+                        "457 / 600",
+                        ["Completed all tasks successfully."],
+                         "80%" // ✅ Attendance
+                    ),
+                     "4": makeSemester(
+                        [
+                            { code: "BCA-401", subject: "DESIGN & ANALYSIS OF ALGORITHM", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-402", subject: "DATA BASE MANAGEMENT SYSTEM", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-403", subject: "OPTIMIZATION TECHNIQUES", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-404", subject: "COMPUTER GRAPHICS & ANIMATION", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L41", name: "DBMS LAB", status: "Submitted" },
+                            { code: "BCA-L42", name: "GRAPHICS LAB", status: "Submitted" }
+                        ],
+                        "Excellent",
+                        "495 / 600",
+                        ["Completed all tasks successfully."],
+                         "76%" // ✅ Attendance
+                    ),
+                    "5": makeSemester(
+                        [
+                            { code: "BCA-501", subject: "WEB DESIGN", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-502", subject: "DATA MINING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-503", subject: ".NET FRAMEWORK AND C# ", teacher: "Mr. Rajat Singh" },
+                        ],
+                        [
+                            { code: "BCA-P51", name: "BCA PROJECT - I", status: "Not-Submitted"},
+                            { code: "BCA-L51", name: "WEB DESIGN LAB", status: "Pending" },
+                            { code: "BCA-L52", name: ".NET LAB", status: "Pending" }
+                        ],
+                        "In Progress",
+                        "N/A", // Result not declared yet
+                        ["5th semester ongoing", "Exams scheduled next month", "Assignments submission deadline: 15 oct 2025"],
+                         "Not-update" // ✅ Attendance
+                    )
+                }
+            },
+            
+             {
+                 // 3 Student
+                name: "AAKASH KUMAR PRASAD",
+                roll: "24543111042",
+                dob: "27/01/2007",
+                image: "Image/ims_5.jpg",
+                email: "Prasadaakash90@gmail.com",
+                course: "BCA - 3 Years",
+                institution: "(543) ATAM PRAKASH ADARSH MAHAVIDYALAYA, ARSADPUR, JANGIPUR, GHAZIPUR",
+                data: {
+                     "1": makeSemester(
+                        [
+                            { code: "BCA-101", subject: "PC SOFTWARE", teacher: "Pooja Ma'am" },
+                            { code: "BCA-102", subject: "COMPUTER ORGANIZATION", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-103", subject: "PROGRAMMING PRINCIPLES & C LANGUAGE", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-104", subject: "FUNDAMENTAL OF IT", teacher: "Pooja Ma'am" }
+                        ],
+                        [
+                            { code: "BCA-L11", name: "PC SOFTWARE LAB", status: "Submitted" },
+                            { code: "BCA-L12", name: "PROGRAMMING IN C LAB", status: "Submitted" }
+                        ],
+                        "Good",
+                        "383 / 600",
+                        ["Completed all tasks successfully."],
+                         "75%" // ✅ Attendance
+                    ),
+                   "2": makeSemester(
+                        [
+                            { code: "BCA-201", subject: "OBJECT MODELING & C++ PROGRAMMING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-202", subject: "SYSTEM ANALYSIS AND DESIGN", teacher: "Pooja Ma'am" },
+                            { code: "BCA-203", subject: "DATA AND FILE STRUCTURE USING C &C++", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-204", subject: "DISCRETE MATHEMATICS", teacher: "Mr. Krishna singh" }
+                        ],
+                        [
+                            { code: "BCA-L21", name: "C++ LAB", status: "Submitted" },
+                            { code: "BCA-L22", name: "DS LAB", status: "Submitted" }
+                        ],
+                        "Good+",
+                        "433 / 600",
+                        ["Completed all tasks successfully."],
+                         "78%" // ✅ Attendance
+                    ),
+                     "3": makeSemester(
+                        [
+                            { code: "BCA-301", subject: "COMPUTER BASED NUMERICAL & STATISTICAL TECHNIQUES", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-302", subject: "SOFTWARE ENGINEERING", teacher: "Pooja Ma'am" },
+                            { code: "BCA-303", subject: "PRINCIPLES OF OPERATING SYSTEM", teacher: "Pooja Ma'am" },
+                            { code: "BCA-304", subject: "JAVA PROGRAMMING", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L31", name: "CBNST LAB", status: "Submitted" },
+                            { code: "BCA-L32", name: "JAVA LAB", status: "Submitted" }
+                        ],
+                        "Very Good",
+                        "439 / 600",
+                        ["Completed all tasks successfully."],
+                         "80%" // ✅ Attendance
+                    ),
+                    "4": makeSemester(
+                        [
+                            { code: "BCA-401", subject: "DESIGN & ANALYSIS OF ALGORITHM", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-402", subject: "DATA BASE MANAGEMENT SYSTEM", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-403", subject: "OPTIMIZATION TECHNIQUES", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-404", subject: "COMPUTER GRAPHICS & ANIMATION", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L41", name: "DBMS LAB", status: "Submitted" },
+                            { code: "BCA-L42", name: "GRAPHICS LAB", status: "Submitted" }
+                        ],
+                        "Good",
+                        "414 / 600",
+                        ["Completed all tasks successfully."],
+                         "75%" // ✅ Attendance
+                    ),
+                    "5": makeSemester(
+                        [
+                            { code: "BCA-501", subject: "WEB DESIGN", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-502", subject: "DATA MINING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-503", subject: ".NET FRAMEWORK AND C# ", teacher: "Mr. Rajat Singh" },
+                        ],
+                        [
+                            { code: "BCA-P51", name: "BCA PROJECT - I", status: "Not-Submitted"},
+                            { code: "BCA-L51", name: "WEB DESIGN LAB", status: "Pending" },
+                            { code: "BCA-L52", name: ".NET LAB", status: "Pending" }
+                        ],
+                        "In Progress",
+                        "N/A", // Result not declared yet
+                        ["5th semester ongoing", "Exams scheduled next month", "Assignments submission deadline: 15 oct 2025"],
+                          "Not-update" // ✅ Attendance
+                    )
+                }
+            },
+             {
+                 // 4 Student
+                name: "ABHISHEK KUMAR GOND",
+                roll: "24543111044",
+                dob: "20/05/2004",
+                image: "Image/ims_6.jpg",
+                email: "Abhi26ku@gmail.com",
+                course: "BCA - 3 Years",
+                institution: "(543) ATAM PRAKASH ADARSH MAHAVIDYALAYA, ARSADPUR, JANGIPUR, GHAZIPUR",
+                data: {
+                    "1": makeSemester(
+                        [
+                            { code: "BCA-101", subject: "PC SOFTWARE", teacher: "Pooja Ma'am" },
+                            { code: "BCA-102", subject: "COMPUTER ORGANIZATION", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-103", subject: "PROGRAMMING PRINCIPLES & C LANGUAGE", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-104", subject: "FUNDAMENTAL OF IT", teacher: "Pooja Ma'am" }
+                        ],
+                        [
+                            { code: "BCA-L11", name: "PC SOFTWARE LAB", status: "Submitted" },
+                            { code: "BCA-L12", name: "PROGRAMMING IN C LAB", status: "Submitted" }
+                        ],
+                        "Good",
+                        "382 / 600",
+                        ["Completed all tasks successfully."],
+                         "85%" // ✅ Attendance
+                    ),
+                   "2": makeSemester(
+                        [
+                            { code: "BCA-201", subject: "OBJECT MODELING & C++ PROGRAMMING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-202", subject: "SYSTEM ANALYSIS AND DESIGN", teacher: "Pooja Ma'am" },
+                            { code: "BCA-203", subject: "DATA AND FILE STRUCTURE USING C &C++", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-204", subject: "DISCRETE MATHEMATICS", teacher: "Mr. Krishna singh" }
+                        ],
+                        [
+                            { code: "BCA-L21", name: "C++ LAB", status: "Submitted" },
+                            { code: "BCA-L22", name: "DS LAB", status: "Submitted" }
+                        ],
+                        "Good+",
+                        "436 / 600",
+                        ["Completed all tasks successfully."],
+                         "90%" // ✅ Attendance
+                    ),
+                     "3": makeSemester(
+                        [
+                            { code: "BCA-301", subject: "COMPUTER BASED NUMERICAL & STATISTICAL TECHNIQUES", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-302", subject: "SOFTWARE ENGINEERING", teacher: "Pooja Ma'am" },
+                            { code: "BCA-303", subject: "PRINCIPLES OF OPERATING SYSTEM", teacher: "Pooja Ma'am" },
+                            { code: "BCA-304", subject: "JAVA PROGRAMMING", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L31", name: "CBNST LAB", status: "Submitted" },
+                            { code: "BCA-L32", name: "JAVA LAB", status: "Submitted" }
+                        ],
+                        "Very Good",
+                        "444 / 600",
+                        ["Completed all tasks successfully."],
+                         "95%" // ✅ Attendance
+                    ),
+                     "4": makeSemester(
+                        [
+                            { code: "BCA-401", subject: "DESIGN & ANALYSIS OF ALGORITHM", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-402", subject: "DATA BASE MANAGEMENT SYSTEM", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-403", subject: "OPTIMIZATION TECHNIQUES", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-404", subject: "COMPUTER GRAPHICS & ANIMATION", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L41", name: "DBMS LAB", status: "Submitted" },
+                            { code: "BCA-L42", name: "GRAPHICS LAB", status: "Submitted" }
+                        ],
+                        "Excellent",
+                        "460 / 600",
+                        ["Completed all tasks successfully."],
+                         "98%" // ✅ Attendance
+                    ),
+                    "5": makeSemester(
+                        [
+                            { code: "BCA-501", subject: "WEB DESIGN", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-502", subject: "DATA MINING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-503", subject: ".NET FRAMEWORK AND C# ", teacher: "Mr. Rajat Singh" },
+                        ],
+                        [
+                            { code: "BCA-P51", name: "BCA PROJECT - I", status: "Under Review"},
+                            { code: "BCA-L51", name: "WEB DESIGN LAB", status: "Pending" },
+                            { code: "BCA-L52", name: ".NET LAB", status: "Pending" }
+                        ],
+                        "In Progress",
+                        "N/A", // Result not declared yet
+                        ["5th semester ongoing", "Exams scheduled next month", "Assignments submission deadline: 15 oct 2025"],
+                          "Not-update" // ✅ Attendance
+                    )
+                }
+            },
+              {
+                 // 5 Student
+                name: "SIDDHANT PRATAP",
+                roll: "24543111052",
+                dob: "10/07/2001",
+                image: "Image/ims_7.1.jpg",
+                email: "shubhamyadavgzp69@gmail.com",
+                course: "BCA - 3 Years",
+                institution: "(543) ATAM PRAKASH ADARSH MAHAVIDYALAYA, ARSADPUR, JANGIPUR, GHAZIPUR",
+                data: {
+                   "1": makeSemester(
+                        [
+                            { code: "BCA-101", subject: "PC SOFTWARE", teacher: "Pooja Ma'am" },
+                            { code: "BCA-102", subject: "COMPUTER ORGANIZATION", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-103", subject: "PROGRAMMING PRINCIPLES & C LANGUAGE", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-104", subject: "FUNDAMENTAL OF IT", teacher: "Pooja Ma'am" }
+                        ],
+                        [
+                            { code: "BCA-L11", name: "PC SOFTWARE LAB", status: "Submitted" },
+                            { code: "BCA-L12", name: "PROGRAMMING IN C LAB", status: "Submitted" }
+                        ],
+                        "Good+",
+                        "463 / 600",
+                        ["Completed all tasks successfully."],
+                         "80%" // ✅ Attendance
+                    ),
+                    "2": makeSemester(
+                        [
+                            { code: "BCA-201", subject: "OBJECT MODELING & C++ PROGRAMMING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-202", subject: "SYSTEM ANALYSIS AND DESIGN", teacher: "Pooja Ma'am" },
+                            { code: "BCA-203", subject: "DATA AND FILE STRUCTURE USING C &C++", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-204", subject: "DISCRETE MATHEMATICS", teacher: "Mr. Krishna singh" }
+                        ],
+                        [
+                            { code: "BCA-L21", name: "C++ LAB", status: "Submitted" },
+                            { code: "BCA-L22", name: "DS LAB", status: "Submitted" }
+                        ],
+                        "Good",
+                        "450 / 600",
+                        ["Completed all tasks successfully."],
+                         "84%" // ✅ Attendance
+                    ),
+                     "3": makeSemester(
+                        [
+                            { code: "BCA-301", subject: "COMPUTER BASED NUMERICAL & STATISTICAL TECHNIQUES", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-302", subject: "SOFTWARE ENGINEERING", teacher: "Pooja Ma'am" },
+                            { code: "BCA-303", subject: "PRINCIPLES OF OPERATING SYSTEM", teacher: "Pooja Ma'am" },
+                            { code: "BCA-304", subject: "JAVA PROGRAMMING", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L31", name: "CBNST LAB", status: "Submitted" },
+                            { code: "BCA-L32", name: "JAVA LAB", status: "Submitted" }
+                        ],
+                        "Excellent",
+                        "476 / 600",
+                        ["Completed all tasks successfully."],
+                         "75%" // ✅ Attendance
+                    ),
+                   "4": makeSemester(
+                        [
+                            { code: "BCA-401", subject: "DESIGN & ANALYSIS OF ALGORITHM", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-402", subject: "DATA BASE MANAGEMENT SYSTEM", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-403", subject: "OPTIMIZATION TECHNIQUES", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-404", subject: "COMPUTER GRAPHICS & ANIMATION", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L41", name: "DBMS LAB", status: "Submitted" },
+                            { code: "BCA-L42", name: "GRAPHICS LAB", status: "Submitted" }
+                        ],
+                        "Very Good",
+                        "453 / 600",
+                        ["Completed all tasks successfully."],
+                         "78%" // ✅ Attendance
+                    ),
+                    "5": makeSemester(
+                        [
+                            { code: "BCA-501", subject: "WEB DESIGN", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-502", subject: "DATA MINING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-503", subject: ".NET FRAMEWORK AND C# ", teacher: "Mr. Rajat Singh" },
+                        ],
+                        [
+                            { code: "BCA-P51", name: "BCA PROJECT - I", status: "Not-Submitted"},
+                            { code: "BCA-L51", name: "WEB DESIGN LAB", status: "Pending" },
+                            { code: "BCA-L52", name: ".NET LAB", status: "Pending" }
+                        ],
+                        "In Progress",
+                        "N/A", // Result not declared yet
+                        ["5th semester ongoing", "Exams scheduled next month", "Assignments submission deadline: 15 oct 2025"],
+                          "Not-update" // ✅ Attendance
+                    )
+                }
+            },
+             {
+                 // 5 Student
+                name: "SIDDHANT PRATAP",
+                roll: "24543111052",
+                dob: "10/07/2001",
+                image: "Image/ims_7.1.jpg",
+                email: "shubhamyadavgzp69@gmail.com",
+                course: "BCA - 3 Years",
+                institution: "(543) ATAM PRAKASH ADARSH MAHAVIDYALAYA, ARSADPUR, JANGIPUR, GHAZIPUR",
+                data: {
+                   "1": makeSemester(
+                        [
+                            { code: "BCA-101", subject: "PC SOFTWARE", teacher: "Pooja Ma'am" },
+                            { code: "BCA-102", subject: "COMPUTER ORGANIZATION", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-103", subject: "PROGRAMMING PRINCIPLES & C LANGUAGE", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-104", subject: "FUNDAMENTAL OF IT", teacher: "Pooja Ma'am" }
+                        ],
+                        [
+                            { code: "BCA-L11", name: "PC SOFTWARE LAB", status: "Submitted" },
+                            { code: "BCA-L12", name: "PROGRAMMING IN C LAB", status: "Submitted" }
+                        ],
+                        "Good+",
+                        "463 / 600",
+                        ["Completed all tasks successfully."],
+                         "80%" // ✅ Attendance
+                    ),
+                    "2": makeSemester(
+                        [
+                            { code: "BCA-201", subject: "OBJECT MODELING & C++ PROGRAMMING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-202", subject: "SYSTEM ANALYSIS AND DESIGN", teacher: "Pooja Ma'am" },
+                            { code: "BCA-203", subject: "DATA AND FILE STRUCTURE USING C &C++", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-204", subject: "DISCRETE MATHEMATICS", teacher: "Mr. Krishna singh" }
+                        ],
+                        [
+                            { code: "BCA-L21", name: "C++ LAB", status: "Submitted" },
+                            { code: "BCA-L22", name: "DS LAB", status: "Submitted" }
+                        ],
+                        "Good",
+                        "450 / 600",
+                        ["Completed all tasks successfully."],
+                         "84%" // ✅ Attendance
+                    ),
+                     "3": makeSemester(
+                        [
+                            { code: "BCA-301", subject: "COMPUTER BASED NUMERICAL & STATISTICAL TECHNIQUES", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-302", subject: "SOFTWARE ENGINEERING", teacher: "Pooja Ma'am" },
+                            { code: "BCA-303", subject: "PRINCIPLES OF OPERATING SYSTEM", teacher: "Pooja Ma'am" },
+                            { code: "BCA-304", subject: "JAVA PROGRAMMING", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L31", name: "CBNST LAB", status: "Submitted" },
+                            { code: "BCA-L32", name: "JAVA LAB", status: "Submitted" }
+                        ],
+                        "Excellent",
+                        "476 / 600",
+                        ["Completed all tasks successfully."],
+                         "75%" // ✅ Attendance
+                    ),
+                   "4": makeSemester(
+                        [
+                            { code: "BCA-401", subject: "DESIGN & ANALYSIS OF ALGORITHM", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-402", subject: "DATA BASE MANAGEMENT SYSTEM", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-403", subject: "OPTIMIZATION TECHNIQUES", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-404", subject: "COMPUTER GRAPHICS & ANIMATION", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L41", name: "DBMS LAB", status: "Submitted" },
+                            { code: "BCA-L42", name: "GRAPHICS LAB", status: "Submitted" }
+                        ],
+                        "Very Good",
+                        "453 / 600",
+                        ["Completed all tasks successfully."],
+                         "78%" // ✅ Attendance
+                    ),
+                    "5": makeSemester(
+                        [
+                            { code: "BCA-501", subject: "WEB DESIGN", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-502", subject: "DATA MINING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-503", subject: ".NET FRAMEWORK AND C# ", teacher: "Mr. Rajat Singh" },
+                        ],
+                        [
+                            { code: "BCA-P51", name: "BCA PROJECT - I", status: "Not-Submitted"},
+                            { code: "BCA-L51", name: "WEB DESIGN LAB", status: "Pending" },
+                            { code: "BCA-L52", name: ".NET LAB", status: "Pending" }
+                        ],
+                        "In Progress",
+                        "N/A", // Result not declared yet
+                        ["5th semester ongoing", "Exams scheduled next month", "Assignments submission deadline: 15 oct 2025"],
+                          "Not-update" // ✅ Attendance
+                    )
+                }
+            },
+             {
+                 // 6 Student
+                name: "NITISH YADAV",
+                roll: "24543111049",
+                dob: "11/08/2005",
+                image: "Image/ims_8.jpg",
+                email: "nygzp9120@gmail.com",
+                course: "BCA - 3 Years",
+                institution: "(543) ATAM PRAKASH ADARSH MAHAVIDYALAYA, ARSADPUR, JANGIPUR, GHAZIPUR",
+                data: {
+                   "1": makeSemester(
+                        [
+                            { code: "BCA-101", subject: "PC SOFTWARE", teacher: "Pooja Ma'am" },
+                            { code: "BCA-102", subject: "COMPUTER ORGANIZATION", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-103", subject: "PROGRAMMING PRINCIPLES & C LANGUAGE", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-104", subject: "FUNDAMENTAL OF IT", teacher: "Pooja Ma'am" }
+                        ],
+                        [
+                            { code: "BCA-L11", name: "PC SOFTWARE LAB", status: "Submitted" },
+                            { code: "BCA-L12", name: "PROGRAMMING IN C LAB", status: "Submitted" }
+                        ],
+                        "Very Good",
+                        "478 / 600",
+                        ["Completed all tasks successfully."],
+                         "88%" // ✅ Attendance
+                    ),
+                    "2": makeSemester(
+                        [
+                            { code: "BCA-201", subject: "OBJECT MODELING & C++ PROGRAMMING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-202", subject: "SYSTEM ANALYSIS AND DESIGN", teacher: "Pooja Ma'am" },
+                            { code: "BCA-203", subject: "DATA AND FILE STRUCTURE USING C &C++", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-204", subject: "DISCRETE MATHEMATICS", teacher: "Mr. Krishna singh" }
+                        ],
+                        [
+                            { code: "BCA-L21", name: "C++ LAB", status: "Submitted" },
+                            { code: "BCA-L22", name: "DS LAB", status: "Submitted" }
+                        ],
+                        "Good",
+                        "468 / 600",
+                        ["Completed all tasks successfully."],
+                         "80%" // ✅ Attendance
+                    ),
+                     "3": makeSemester(
+                        [
+                            { code: "BCA-301", subject: "COMPUTER BASED NUMERICAL & STATISTICAL TECHNIQUES", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-302", subject: "SOFTWARE ENGINEERING", teacher: "Pooja Ma'am" },
+                            { code: "BCA-303", subject: "PRINCIPLES OF OPERATING SYSTEM", teacher: "Pooja Ma'am" },
+                            { code: "BCA-304", subject: "JAVA PROGRAMMING", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L31", name: "CBNST LAB", status: "Submitted" },
+                            { code: "BCA-L32", name: "JAVA LAB", status: "Submitted" }
+                        ],
+                        "Good+",
+                        "474/600",
+                        ["Completed all tasks successfully."],
+                         "78%" // ✅ Attendance
+                    ),
+                   "4": makeSemester(
+                        [
+                            { code: "BCA-401", subject: "DESIGN & ANALYSIS OF ALGORITHM", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-402", subject: "DATA BASE MANAGEMENT SYSTEM", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-403", subject: "OPTIMIZATION TECHNIQUES", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-404", subject: "COMPUTER GRAPHICS & ANIMATION", teacher: "Mr. Rajat Singh" }
+                        ],
+                        [
+                            { code: "BCA-L41", name: "DBMS LAB", status: "Submitted" },
+                            { code: "BCA-L42", name: "GRAPHICS LAB", status: "Submitted" }
+                        ],
+                        "Excellent",
+                        "490 / 600",
+                        ["Completed all tasks successfully."],
+                         "75%" // ✅ Attendance
+                    ),
+                    "5": makeSemester(
+                        [
+                            { code: "BCA-501", subject: "WEB DESIGN", teacher: "Mr. Sparsh Sharma" },
+                            { code: "BCA-502", subject: "DATA MINING", teacher: "Mr. Rajat Singh" },
+                            { code: "BCA-503", subject: ".NET FRAMEWORK AND C# ", teacher: "Mr. Rajat Singh" },
+                        ],
+                        [
+                            { code: "BCA-P51", name: "BCA PROJECT - I", status: "Not-Submitted"},
+                            { code: "BCA-L51", name: "WEB DESIGN LAB", status: "Pending" },
+                            { code: "BCA-L52", name: ".NET LAB", status: "Pending" }
+                        ],
+                        "In Progress",
+                        "N/A", // Result not declared yet
+                        ["5th semester ongoing", "Exams scheduled next month", "Assignments submission deadline: 15 oct 2025"],
+                          "Not-update" // ✅ Attendance
+                    )
+                }
+            },
+            // 7 Student
+        ];
+
+        let currentStudent = null;
+
+        // Login function
+        function login() {
+            const roll = document.getElementById("roll").value.trim();
+            const dob = document.getElementById("dob").value.trim();
+            const student = students.find(s => s.roll === roll && s.dob === dob);
+
+            if (!student) {
+                alert("Invalid Roll Number or DOB!");
+                document.getElementById("yearSemSelection").style.display = "none";
+                document.getElementById("profile").style.display = "none";
+                return;
+            }
+
+            currentStudent = student;
+            alert("Login successful! Please select your Semester.");
+            document.getElementById("yearSemSelection").style.display = "block";
+        }
+        // function logout() {
+        //     currentStudent = null;
+        //     document.getElementById("profile").style.display = "none";
+        //     document.getElementById("yearSemSelection").style.display = "none";
+        //     alert("Logged out successfully!");
+        // }
+
+
+        // Display student data
+        function showStudentData() {
+            const sem = document.getElementById("semester").value;
+            if (!sem) { alert("Please select a semester."); return; }
+
+            const student = currentStudent;
+            const data = student.data[sem];
+            if (!data) { alert(`No data found for Semester ${sem} for ${student.name}.`); return; }
+
+            document.getElementById("profile").style.display = "block";
+            document.getElementById("name").innerText = student.name;
+            document.getElementById("rollInfo").innerText = student.roll;
+            document.getElementById("dobInfo").innerText = student.dob;
+            document.getElementById("email").innerText = student.email;
+            document.getElementById("course").innerText = student.course;
+            document.getElementById("institution").innerText = student.institution;
+            document.getElementById("semInfo").innerText = sem;
+            document.getElementById("attendance").innerText = data.attendance;
+            document.getElementById("performance").innerText = data.performance;
+            document.getElementById("result").innerText = data.result;
+            document.getElementById("profileImage").src = student.image;
+
+            // Update courses table with SUB CODE
+            const coursesTable = document.getElementById("coursesTable");
+            coursesTable.innerHTML = "<tr><th>SUB CODE</th><th>Course / Subject</th><th>Teacher</th></tr>";
+            data.courses.forEach(c => {
+                const row = coursesTable.insertRow();
+                row.insertCell(0).innerText = c.code;
+                row.insertCell(1).innerText = c.subject;
+                row.insertCell(2).innerText = c.teacher;
+            });
+
+            // Update assignments table with SUB CODE
+            const assignmentsTable = document.getElementById("assignmentsTable");
+            assignmentsTable.innerHTML = "<tr><th>SUB CODE</th><th>Project / Assignment</th><th>Status</th></tr>";
+            data.assignments.forEach(a => {
+                const row = assignmentsTable.insertRow();
+                row.insertCell(0).innerText = a.code;
+                row.insertCell(1).innerText = a.name;
+                row.insertCell(2).innerText = a.status;
+            });
+
+            // Notices
+            const noticesList = document.getElementById("notices");
+            noticesList.innerHTML = "";
+            data.notices.forEach(n => {
+                const li = document.createElement("li");
+                li.innerText = n;
+                noticesList.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
