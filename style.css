@@ -247,6 +247,7 @@ body {
 
 .btn-blue {
   background: #2a5ca8;
+  text-decoration: none;
   color: #fff;
   padding: 8px 16px;
   border-radius: 6px;
